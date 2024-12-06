@@ -14,6 +14,14 @@ document.addEventListener('DOMContentLoaded', function(){
         return response.json();
     })
     .then(function(json){
-        console.log(json);
+        
+        profileAvatar.src = json.avatar_url
+        profileName.innerHTML = json.name;
+        profileUser.innerHTML = json.login;
+        profileRepos.innerHTML = json.public_repos;
+        profileFollowers.innerHTML = json.followers;
+        profileFollowing.innerHTML = json.following;
+        profileLink.href = json.html_url;
+
     })
 })
