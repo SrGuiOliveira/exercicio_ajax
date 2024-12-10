@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
     fetch(endpoint).then(function(response){
+        if (!response.ok) {
+            throw new Error ('Não foi possível carregar os dados, atualize a página ou tente novamente mais tarde!')
+        }
         return response.json();
     })
     .then(function(json){
@@ -22,6 +25,10 @@ document.addEventListener('DOMContentLoaded', function(){
         profileFollowers.innerHTML = json.followers;
         profileFollowing.innerHTML = json.following;
         profileLink.href = json.html_url;
-
+        
+    })
+    .catch(function (error){
+        alert(error.message);
+        console.error(error);
     })
 })
